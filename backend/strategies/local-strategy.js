@@ -5,12 +5,10 @@ const bcrypt = require('bcrypt');
 const generateSHA256Hash = require('../routes/assets/generateSHA256Hash.js');
 
 passport.serializeUser((user, done) => {
-    console.log("Inside serialization");
     done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
-    console.log("Inside deserialization");
     const user = await usersTable.findAll({
         where: {
             id: id
